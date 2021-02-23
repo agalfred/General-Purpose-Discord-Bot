@@ -341,7 +341,3 @@ healthchecksdb
 
 # Ignore local storage files
 .path/
-
-# Ignore Project and Solution Files
-Discord_Bot.pyproj
-Discord_Bot.sln

@@ -6,10 +6,15 @@ from MemeGenerator import RedditCollector
 
 load_dotenv()
 
+subreddits_file = open('subreddits.txt','r')
+subreddits_listed = subreddits_file.read()
+subreddits_split = subreddits_listed.splitlines()
+subreddits_file.close()
+
 meme_collector = RedditCollector(client_id=os.getenv("REDDIT_ID"), 
                                 client_secret=os.getenv("REDDIT_SECRET"), 
                                 user_agent=os.getenv("REDDIT_UA"), 
-                                subreddits_list=['MemeEconomy','memes','dankmemes','PrequelMemes','terriblefacebookmemes','wholesomememes', 'CollegeMemes', 'ComedyCemetery', 'retailmemes', 'Memes_Of_The_Dank', 'Animemes', 'marvelmemes'], 
+                                subreddits_list=subreddits_split, 
                                 limit=50,
                                 username='',
                                 password='',

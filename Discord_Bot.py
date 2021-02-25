@@ -4,39 +4,45 @@ import json
 from discord.ext import commands
 from pretty_help import PrettyHelp
 from MemeGenerator import RedditCollector
+from jsonHandler import jsonHandler
 
-with open('setup.json', 'r') as data:
-    config = json.load(data)
+config = jsonHandler()
 
-discord_info = config['discord-bot']['discord']
-reddit_info = config['discord-bot']['reddit']
-
-subreddits=[]
-for x in reddit_info['subreddits']:
-    subreddits.append(x)
-
-meme_collector = RedditCollector(client_id=reddit_info['id'], 
-                                client_secret=reddit_info['secret'], 
-                                user_agent=reddit_info['ua'], 
-                                subreddits_list=subreddits, 
+meme_collector = RedditCollector(client_id=config.reddit['id'], 
+                                client_secret=config.reddit['secret'], 
+                                user_agent=config.reddit['ua'], 
+                                subreddits_list=config.subreddits, 
                                 limit=50,
                                 username='',
                                 password='',
                                 meme='')
 
-DISCORD_TOKEN = discord_info['token']
+DISCORD_TOKEN = config.discord['token']
 
-bot_prefix = "!"
+default_prefix = "!"
 
-global memes_shown
+async def determine_prefix(bot,message):
+    guild = message.guild
+    if guild:
+        x = config.prefixes.get(str(guild.id), default_prefix)
+        return x
+    else:
+        return default_prefix
 
-bot = commands.Bot(command_prefix=bot_prefix)
+bot = commands.Bot(command_prefix=determine_prefix)
 
 bot.help_command = PrettyHelp(color = discord.Color.dark_gold(), show_index = False, no_category = "Commands", sort_commands = True)
+print(bot.command_prefix)
 
 bot.memes_shown = 0
 bot.recent_meme = ""
 bot.bad_memes = []
+
+@bot.command(name="prefix", help="The prefix that Doge uses to get stuff")
+async def prefix(ctx, *, prefix=""):
+    config.prefixes["{}".format(ctx.guild.id)] = "{}".format(prefix)
+    config.write_prefixes(config.prefixes)
+    await ctx.channel.send("Prefix changed! Such Wow")
 
 @bot.command(name="meme", help="Grabs a random meme from a list of subreddits")
 async def meme(ctx):

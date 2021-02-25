@@ -342,5 +342,5 @@ healthchecksdb
 # Ignore local storage files
 .path/
 
-# Ignore .env
-.env
+# Ignore .JSON file
+setup.json

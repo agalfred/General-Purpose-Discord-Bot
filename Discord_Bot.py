@@ -1,27 +1,30 @@
 import os
 import discord
+import json
 from discord.ext import commands
 from pretty_help import PrettyHelp
-from dotenv import load_dotenv
 from MemeGenerator import RedditCollector
 
-load_dotenv()
+with open('setup.json', 'r') as data:
+    config = json.load(data)
 
-subreddits_file = open('subreddits.txt','r')
-subreddits_listed = subreddits_file.read()
-subreddits_split = subreddits_listed.splitlines()
-subreddits_file.close()
+discord_info = config['discord-bot']['discord']
+reddit_info = config['discord-bot']['reddit']
 
-meme_collector = RedditCollector(client_id=os.getenv("REDDIT_ID"), 
-                                client_secret=os.getenv("REDDIT_SECRET"), 
-                                user_agent=os.getenv("REDDIT_UA"), 
-                                subreddits_list=subreddits_split, 
+subreddits=[]
+for x in reddit_info['subreddits']:
+    subreddits.append(x)
+
+meme_collector = RedditCollector(client_id=reddit_info['id'], 
+                                client_secret=reddit_info['secret'], 
+                                user_agent=reddit_info['ua'], 
+                                subreddits_list=subreddits, 
                                 limit=50,
                                 username='',
                                 password='',
                                 meme='')
 
-DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
+DISCORD_TOKEN = discord_info['token']
 
 bot_prefix = "!"
 

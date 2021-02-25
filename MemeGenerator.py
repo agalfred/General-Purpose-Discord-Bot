@@ -19,12 +19,11 @@ class RedditCollector:
         self.username = username
         self.password = password
         self.meme = meme
-        self.reddit = praw.Reddit(client_id = self.client_id, client_secret = self.client_secret, user_agent = self.user_agent, username=username, password=password)
+        self.reddit = praw.Reddit(client_id = self.client_id, client_secret = self.client_secret, user_agent = self.user_agent, username=username, password=password, check_for_async=False)
 
     def collect_meme(self):
 
         ran_subreddit = random.randint(0, (len(self.subreddits_list)-1))
-        print("Random subreddit number " + str(ran_subreddit) + "\n")
         subreddit_name = self.subreddits_list[ran_subreddit]
         self.grab_meme(subreddit_name)
 
@@ -48,7 +47,5 @@ class RedditCollector:
 
     def return_url(self):
         meme_num = (len(self.meme_urls)-1)
-        print("Number of possible memes " + str(meme_num) + "\n")
         meme_out = random.randint(0,meme_num)
         self.meme=self.meme_urls[meme_out].decode('utf-8')
-        print("Meme number to be output " + str(meme_out) + "\n")

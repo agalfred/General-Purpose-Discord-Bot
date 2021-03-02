@@ -1,6 +1,7 @@
 # General Purpose Discord Bot
 
-## 
+## Motivation For The Bot
+I began creating this Discord Bot because I wanted to create a personal project that I feel I would be able to use in the future. As a casual gamer in my free time, I use Discord quite a bit. Contributing to many different Discord servers, I feel that most Discord bots are very specific in their functions and are not very broad. This can end up with a server having many different Discord bots to do many different things. I wanted to create a bot that is a bit more generalized in its functions. I also wanted to create something that allows anyone to host their own Discord bot. 
 
 ## Current Modules
 **jsonHandler** : Handles read and write functions to .json files<br>

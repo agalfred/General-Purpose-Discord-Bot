@@ -21,7 +21,7 @@ You will need to first create a Discord Bot through the Discord Developer Portal
 ### Create A Reddit Application
 We also need to create a Reddit Application so we can directly access subreddit information through PRAW.<br>
 Start by going [here](https://ssl.reddit.com/prefs/apps/) and click create another app.<br>
-![Reddit App Example](./Images/Informationalnew-reddit-app.png)<br>
+![Reddit App Example](./Images/new-reddit-app.png)<br>
 Note down the Reddit ID and Reddit Secret as we will need them later. Where to find that information is shown below.<br>
 ![Reddit App Filled](./Images/reddit-app-filled.png)<br>
 

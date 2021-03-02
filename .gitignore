@@ -342,3 +342,4 @@ healthchecksdb
 # Ignore .JSON files
 prefixes.json
 setup.json
+badmemes.json

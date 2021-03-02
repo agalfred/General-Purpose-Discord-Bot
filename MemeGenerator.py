@@ -4,6 +4,10 @@ import os
 import datetime
 import random
 from math import floor
+from jsonHandler import jsonHandler
+
+# Create an instance of jsonHandler class
+handler = jsonHandler()
 
 # Create random seed 
 random.seed()
@@ -63,3 +67,8 @@ class RedditCollector:
         meme_num = (len(self.meme_urls)-1)
         meme_out = random.randint(0,meme_num)
         self.meme=self.meme_urls[meme_out].decode('utf-8')
+        # Check to see if the url is blacklisted
+        check = handler.badmemes.get(str(self.meme), "False")
+        if check == "Bad Meme":
+            meme_out = random.randint(0,meme_num)
+            self.meme=self.meme_urls[meme_out].decode('utf-8')

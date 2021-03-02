@@ -1,0 +1,21 @@
+{
+    "discord-bot":{
+        "discord":{
+            "token":"Your Bot Token Goes Here"
+        },
+        "reddit":{
+            "id":"Your Reddit ID Goes Here", 
+            "secret":"Your Reddit Secret Goes Here", 
+            "ua":"Put information here for Reddit connection logs.", 
+            "subreddits":[ "Put",
+                "The",
+                "Subreddits",
+                "You",
+                "Want",
+                "To",
+                "Pull",
+                "From",
+                "Here"]
+        }
+    }
+}

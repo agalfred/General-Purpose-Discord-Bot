@@ -339,8 +339,6 @@ ASALocalRun/
 # BeatPulse healthcheck temp database
 healthchecksdb
 
-# Ignore local storage files
-.path/
-
 # Ignore .JSON files
-*.json
+prefixes.json
+setup.json

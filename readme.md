@@ -21,16 +21,16 @@ You will need to first create a Discord Bot through the Discord Developer Portal
 ### Create A Reddit Application
 We also need to create a Reddit Application so we can directly access subreddit information through PRAW.<br>
 Start by going [here](https://ssl.reddit.com/prefs/apps/) and click create another app.<br>
-![Reddit App Example](Informationalnew-reddit-app.png)<br>
+![Reddit App Example](./Images/Informationalnew-reddit-app.png)<br>
 Note down the Reddit ID and Reddit Secret as we will need them later. Where to find that information is shown below.<br>
-![Reddit App Filled](reddit-app-filled.png)<br>
+![Reddit App Filled](./Images/reddit-app-filled.png)<br>
 
 ### Download Project And Edit
 Now we need to download the project and create a setup.json file. This file is essential and is needed in order for the bot to run properly. I have included a setup-example.json file shown below.<br> 
-![Example setup.json](jsonExample.png)<br>
+![Example setup.json](./Images/jsonExample.png)<br>
 <br>
 Within the quotes, enter in your Discord Token, Reddit ID and Reddit Secret where asked. In the subbreddit section, put the subreddit name in quotes like shown. For example if you want to pull a meme from **reddit.com/r/funny**, you would put **funny** in the quotes. An example subreddit list is shown below.<br>
-![Example Subreddit List](example-subreddits.png)<br>
+![Example Subreddit List](./Images/example-subreddits.png)<br>
 
 **My suggestion would be to edit the setup-example.json file and save it as setup.json**
 

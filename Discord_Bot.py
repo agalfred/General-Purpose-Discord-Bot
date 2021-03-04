@@ -90,9 +90,9 @@ async def givebadmeme(ctx):
     for x in config.badmemes:
         bad.append(x)
     rannum = random.randint(0, len(config.badmemes))
-    try:
+    if (len(bad) != 0):
         await ctx.channel.send(bad[rannum])
-    except:
+    else:
         await ctx.channel.send("Congrats, you have not seen any bad memes!\n Amaze :grinning:")
 
 # Run the bot using the Discord token provided

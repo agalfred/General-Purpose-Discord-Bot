@@ -18,7 +18,7 @@ meme_collector = RedditCollector(client_id=config.reddit['id'],
                                 limit=50,
                                 username='',
                                 password='',
-                                meme='')
+                                )
 
 # Assign local variable for Dicord Token
 DISCORD_TOKEN = config.discord['token']
@@ -45,6 +45,7 @@ bot.help_command = PrettyHelp(color = discord.Color.dark_gold(), show_index = Fa
 # Initiate local bot class variables
 bot.memes_shown = 0
 bot.recent_meme = ""
+bot.recent_location = ""
 
 # Create bot command that allows user to define a new prefix
 @bot.command(name="prefix", help="The prefix that Doge uses to get stuff")
@@ -62,7 +63,8 @@ async def meme(ctx):
     new_meme.collect_meme()
     # Set recent_meme equal to the grabbed url for use in badmeme command
     bot.recent_meme = new_meme.meme
-    await ctx.channel.send(new_meme.meme)
+    bot.recent_location = new_meme.memelocation
+    await ctx.channel.send(new_meme.meme + "\n r/" + str(new_meme.memelocation))
     # Iterate memes_shown for use in count command
     bot.memes_shown+=1
 
@@ -89,7 +91,7 @@ async def givebadmeme(ctx):
     bad = []
     for x in config.badmemes:
         bad.append(x)
-    rannum = random.randint(0, len(config.badmemes))
+    rannum = random.randint(0, len(config.badmemes)-1)
     if (len(bad) != 0):
         await ctx.channel.send(bad[rannum])
     else:

@@ -76,26 +76,33 @@ async def count(ctx):
 # Create bot command to flag a bad meme and add it to a blacklist
 @bot.command(name="badmeme", help="Adds the last meme shown to a blacklist of memes")
 async def badmeme(ctx):
-    await ctx.channel.send("Such sad :cry: \n I will not show bad meme again")
-    config.badmemes["{}".format(bot.recent_meme)] = "Bad Meme"
-    config.write_badmemes(config.badmemes)
+    await ctx.channel.send("Such sad :grin: \n I will remember good meme")
+    config.badmemes["{}".format(bot.recent_meme)] = "Good Meme"
+    config.write_badmemes(config.favorite)
+
+# Create bot command to flag a meme as a favorite and add it to a favorite list
+@bot.command(name="favorite", help="Adds the last meme shown to a favorite list of memes")
+async def favorite(ctx):
+    await ctx.channel.send("Such wow :yum: \n I will remeber this exceptional meme")
+    config.favorite["{}".format(bot.recent_meme)] = "Favorite"
+    config.write_favorite(config.favorite)
 
 # Create bot command to display the number of elements in the bad memes array
 @bot.command(name="badlist", help="Displays the number of memes that have been blacklisted")
 async def badlist(ctx):
     await ctx.channel.send(":sob: There are " + str(len(config.badmemes)) + " on my bad memes list \n Better memes for you though :grinning:")
 
-# Create bot command to display a blacklisted meme
-@bot.command(name="givebadmeme", help="Displays a meme that has been blacklisted")
-async def givebadmeme(ctx):
-    bad = []
-    for x in config.badmemes:
-        bad.append(x)
-    rannum = random.randint(0, len(config.badmemes)-1)
-    if (len(bad) != 0):
-        await ctx.channel.send(bad[rannum])
+# Create bot command to display a favorite meme
+@bot.command(name="givefavorite", help="Displays a meme that has been favoriteded")
+async def givefavorite(ctx):
+    good = []
+    for x in config.favorite:
+        good.append(x)
+    rannum = random.randint(0, len(config.favorite)-1)
+    if (len(good) != 0):
+        await ctx.channel.send(good[rannum])
     else:
-        await ctx.channel.send("Congrats, you have not seen any bad memes!\n Amaze :grinning:")
+        await ctx.channel.send("Sorry, you have not seen any amazing memes!\n Such sad :cry:")
 
 # Run the bot using the Discord token provided
 bot.run(DISCORD_TOKEN)

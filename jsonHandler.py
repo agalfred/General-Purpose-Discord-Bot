@@ -25,6 +25,14 @@ class jsonHandler:
             with open('badmemes.json', 'w') as outfile:
                 json.dump(badmeme_data, outfile)
 
+        try:
+            with open('favorite.json') as favorite_file:
+                favorite_data = json.load(favorite_file)
+        except:
+            favorite_data = {}
+            with open('favorite.json', 'w') as outfile:
+                json.dump(favorite_data, outfile)
+
         # Assign .json attributes to class attributes
         self.discord = data['discord-bot']['discord']
         self.reddit = data['discord-bot']['reddit']
@@ -35,6 +43,7 @@ class jsonHandler:
             self.subreddits.append(x)
         self.prefixes = prefix_data
         self.badmemes = badmeme_data
+        self.favorite = favorite_data
 
     # Open our prefixes.json file and write to it
     # Used when changing our prefix from its default value
@@ -45,5 +54,11 @@ class jsonHandler:
     # Open our badmemes.json file and write to it
     # Used when calling the badmeme function
     def write_badmemes(self, data, filename='badmemes.json'):
+        with open(filename, 'w') as temp:
+            json.dump(data, temp, indent=4)
+
+    # Open our favorites.json file and write to it
+    # Used when calling the favorite function
+    def write_favorite(self, data, filename='favorite.json'):
         with open(filename, 'w') as temp:
             json.dump(data, temp, indent=4)

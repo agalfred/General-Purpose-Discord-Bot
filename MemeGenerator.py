@@ -52,8 +52,7 @@ class RedditCollector:
         # Grab number of images from the subreddit based on the limit provided
         # It grabs more than one image to improve randomness of the bot
         subreddit = self.reddit.subreddit(subreddit)  
-        posts = subreddit.hot(limit=self.limit)
-        for post in posts:
+        for post in subreddit.hot(limit=self.limit):
             _, ext = os.path.splitext(post.url)
             # Check to see if the image has an allowed extension
             if ext in allowed_image_extensions:

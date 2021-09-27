@@ -31,7 +31,7 @@
     <Compile Include="memes.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ytPlayer.py">
+    <Compile Include="music.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

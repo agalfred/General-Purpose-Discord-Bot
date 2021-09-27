@@ -18,7 +18,7 @@ meme_collector = RedditCollector(client_id=config.reddit['id'],
                                 password='',
                                 )
 
-class MemesCog(commands.Cog):
+class Memes(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
@@ -78,4 +78,4 @@ class MemesCog(commands.Cog):
                 await ctx.channel.send("Sorry, you have not seen any amazing memes!\n Such sad :cry:")
 
 def setup(bot):
-    bot.add_cog(MemesCog(bot))
+    bot.add_cog(Memes(bot))

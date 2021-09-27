@@ -26,7 +26,8 @@ async def determine_prefix(bot,message):
         return default_prefix
 
 # List cogs to be loaded
-initial_extensions = ["memes"
+initial_extensions = ["memes",
+                      "music"
                       ]
 
 # Create instance of Discord bot class

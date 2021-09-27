@@ -344,3 +344,8 @@ prefixes.json
 setup.json
 badmemes.json
 favorite.json
+
+music.py
+
+song.mp3
+ffmpeg/
